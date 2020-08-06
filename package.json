@@ -1,0 +1,24 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetarPetric/todo-list.git"
+  },
+  "author": "Petar Petric",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PetarPetric/todo-list/issues"
+  },
+  "homepage": "https://github.com/PetarPetric/todo-list#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {},
+  "description": ""
+}
