@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* title styling */
+
+.titleBox {
+  font-weight: bold;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  border-bottom: black solid 4px;
+  margin: 5px 2px;
+  padding-top: 10px;
+} 
+
+/* Styling of Actual ToDo List box */ 
+
+.actualStuff {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.projectList {
+  margin: 5px 2px;
+  width: 18%;
+  height: 100vh;
+  border-right: black solid 3px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.projectOverview {
+  width: 82%;
+  margin: 5px 2px;
+  border-left: black solid 3px;
+}
+
+/* Button for adding */
+
+.btnAdd {
+  height: 4%;
+  width: 94%;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 10px;
+}
+
+.actualProjects {
+  padding-top: 10px;
+  height: 100%;
+  border-top: black solid 3px;
+  margin: 5px 2px;
+  width: 14vw;
+
+}
+
+/* Modal Form */ 
+
+.inputForm {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  background: white;
+}
+
+
+
