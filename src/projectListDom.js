@@ -1,6 +1,7 @@
+let modalPlace;
 const createNewProjects = () => {
   
-  const modalPlace = document.querySelector('.actualProjects')
+  modalPlace = document.querySelector('.actualProjects')
   const modalForm = document.createElement('div');
   
   modalPlace.append(modalForm);
@@ -28,4 +29,4 @@ const createNewProjects = () => {
 
 
 
-export default createNewProjects;
+export {createNewProjects};

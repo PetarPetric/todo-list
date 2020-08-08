@@ -1,4 +1,4 @@
-import createNewProjects from './projectListDom';
+import {createNewProjects} from './projectListDom';
 
 const newProjects = () => {
     const btnAdd = document.querySelector('.btnAdd');
