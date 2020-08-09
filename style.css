@@ -69,5 +69,11 @@
   background: white;
 }
 
+.projectClass {
+  text-align: center;
+  display: flex;
+  height: 30px;
+  background-color: white;
+}
 
 
