@@ -1,34 +1,31 @@
-import {createNewProjects} from './projectListDom';
+import {createNewProject, cantCreate} from './projectListDom';
 
 const newProjects = () => {
     const btnAdd = document.querySelector('.btnAdd');
     initListener(btnAdd, 'add', 'click');
+
 };
 
-
-// initListener takes an element type and event
 function initListener(element, type, event) {
-    //adds eventlistener to element and takes event as input
     element.addEventListener(event, () => {
-        const todoHolder = document.querySelector('.inputForm');
-        // switch takes type of case
+        const todoHolder = document.querySelector('#modalBox');
         switch (type) {
-        case 'add':
-            // if case is add and todoholder is not there createNewProjects
-            if (!todoHolder) {
-                createNewProjects();
-                const cancelingStuff = document.querySelector('.cancelingStuff');
-                initListener(cancelingStuff, 'cancel', 'click');
-                const addingProject = document.querySelector('.addingStuff')
-                initListener(addingProject, 'addingStuff', 'click');
+            case 'add':
+                if (!todoHolder) {
+                    createNewProject()
+                    const cancelingStuff = document.querySelector('.cancelingStuff');
+                    initListener(cancelingStuff, 'cancel', 'click');
+                    const addStuffToList = document.querySelector('.addingStuff');
+                    initListener(addStuffToList, 'addProjectTl', 'click');
                 break;
                 };
+                break;
             case 'cancel':
                 todoHolder.remove();
                 break;
-            case 'addingStuff':
+            case 'addProjectTl':
                 todoHolder.remove();
-
+                cantCreate();
                 break;
             default:
                 console.log('unknown type');
@@ -37,6 +34,4 @@ function initListener(element, type, event) {
     })
 };
 
-
-
-export { newProjects };
+export {newProjects};

@@ -1,5 +1,5 @@
 import pageRender from './dom';
-import {newProjects, addProject} from './projectLogic';
+import {newProjects} from './projectLogic';
 
 pageRender();
 newProjects();
