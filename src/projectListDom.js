@@ -50,9 +50,10 @@ const createdProject = () => {
 
 };
 
+
 const cantCreate = () => {
   if(inputForm.value === "") {
-    alert("CANT CREATE EMPTY PROJECT")
+    alert("CANT CREATE EMPTY PROJECT");
   } else {createdProject()}
 }
 
