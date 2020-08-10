@@ -21,7 +21,8 @@ const inputInit = () => {
   const addingStuff = document.createElement('button');
   const cancelStuff = document.createElement('button');
 
-  inputForm.classList.add('inputForm')
+  inputForm.classList.add('justInput')
+  inputForm.setAttribute('name', 'justInput');
 
   addingStuff.classList.add('addingStuff');
   cancelStuff.classList.add('cancelingStuff');
@@ -57,4 +58,4 @@ const cantCreate = () => {
   } else {createdProject()}
 }
 
-export {initModal, inputInit, createNewProject, createdProject, cantCreate};
+export {initModal, inputInit, createNewProject, createdProject, cantCreate, inputForm};

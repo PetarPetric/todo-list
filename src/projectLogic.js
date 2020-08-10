@@ -1,9 +1,10 @@
-import {createNewProject, cantCreate} from './projectListDom';
+import {createNewProject, cantCreate, inputForm} from './projectListDom';
+
+const projArr = [];
 
 const newProjects = () => {
     const btnAdd = document.querySelector('.btnAdd');
     initListener(btnAdd, 'add', 'click');
-
 };
 
 function initListener(element, type, event) {
@@ -22,10 +23,12 @@ function initListener(element, type, event) {
                 todoHolder.remove();
                 break;
             case 'addProjectTl':
+                makingObj();
                 todoHolder.remove();
                 cantCreate();
                 createNewProject();
                 addCancelInits();
+                console.log(projArr);
                 break;
             default:
                 console.log('unknown type');
@@ -34,6 +37,8 @@ function initListener(element, type, event) {
     })
 };
 
+
+
 function addCancelInits() {
     const cancelingStuff = document.querySelector('.cancelingStuff');
     initListener(cancelingStuff, 'cancel', 'click');
@@ -41,6 +46,15 @@ function addCancelInits() {
     initListener(addStuffToList, 'addProjectTl', 'click');
 }
 
+const ProjectsFac = function(projectName) {
+    return {
+        projectName
+    }
+}
 
+function makingObj() {
+    const newProj = ProjectsFac(inputForm.value);
+    projArr.push(newProj);
+};
 
 export {newProjects};
