@@ -57,6 +57,12 @@
   width: 14vw;
 }
 
+.addingStuff, .cancelingStuff {
+  height: 28px;
+  width: 60px;
+  text-align: center;
+}
+
 /* Modal Form */ 
 
 #modalBox {
@@ -93,6 +99,8 @@
 #buttonDiv {
   display: flex;
   justify-content: space-around;
-  margin: 5px;
+  margin: 8px;
 }
+
+
 
