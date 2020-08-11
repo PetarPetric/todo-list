@@ -61,7 +61,7 @@
 
 #modalBox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
   height: 30px;
   background: white;
@@ -70,6 +70,7 @@
 
 .justInput {
   text-align: center;
+
 }
 
 .projectClass {
@@ -89,4 +90,9 @@
   background-color: #CED1D0;
 }
 
+#buttonDiv {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+}
 

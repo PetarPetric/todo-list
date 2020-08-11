@@ -1,4 +1,4 @@
-import {createNewProject, cantCreate, inputForm} from './projectListDom';
+import {createNewProject, objCreation, inputForm} from './projectListDom';
 
 const projArr = [];
 
@@ -25,7 +25,7 @@ function initListener(element, type, event) {
             case 'addProjectTl':
                 makingObj();
                 todoHolder.remove();
-                cantCreate();
+                objCreation();
                 createNewProject();
                 addCancelInits();
                 console.log(projArr);

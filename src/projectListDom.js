@@ -20,19 +20,22 @@ const inputInit = () => {
   inputForm = document.createElement('input');
   const addingStuff = document.createElement('button');
   const cancelStuff = document.createElement('button');
-
-  inputForm.classList.add('justInput')
+  const buttonDiv = document.createElement('div');
+  buttonDiv.setAttribute('id', 'buttonDiv');
+  
+  inputForm.classList.add('justInput');
   inputForm.setAttribute('name', 'justInput');
-
+  
   addingStuff.classList.add('addingStuff');
   cancelStuff.classList.add('cancelingStuff');
-
+  
   addingStuff.textContent = "Add"
   cancelStuff.textContent = "Cancel"
-
+  
   modalForm.append(inputForm);
-  modalForm.append(addingStuff);
-  modalForm.append(cancelStuff);
+  modalForm.append(buttonDiv);
+  buttonDiv.append(addingStuff);
+  buttonDiv.append(cancelStuff);
 
   modalForm.classList.add('inputForm');
   inputForm.placeholder = "Project Name"
@@ -52,10 +55,10 @@ const createdProject = () => {
 };
 
 
-const cantCreate = () => {
+const objCreation = () => {
   if(inputForm.value === "") {
     alert("CANT CREATE EMPTY PROJECT");
   } else {createdProject()}
 }
 
-export {initModal, inputInit, createNewProject, createdProject, cantCreate, inputForm};
+export {initModal, inputInit, createNewProject, createdProject, objCreation, inputForm};
