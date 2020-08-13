@@ -1,50 +1,34 @@
 import {createNewProject, objCreation, inputForm} from './projectListDom';
 
-const projArr = [];
+const todoListArray = [];
 
 const newProjects = () => {
     const btnAdd = document.querySelector('.btnAdd');
-    initListener(btnAdd, 'add', 'click');
-};
-
-function initListener(element, type, event) {
-    element.addEventListener(event, () => {
-        const todoHolder = document.querySelector('#modalBox');
-
-        switch (type) {
-            case 'add':
-                if (!todoHolder) {
-                    createNewProject();
-                    addCancelInits();
-                break;
-                };
-                break;
-            case 'cancel':
-                todoHolder.remove();
-                break;
-            case 'addProjectTl':
-                makingObj();
-                todoHolder.remove();
-                objCreation();
-                createNewProject();
-                addCancelInits();
-                console.log(projArr);
-                break;
-            default:
-                console.log('unknown type');
-                break;
-        }
+    btnAdd.addEventListener('click', () => {
+    createNewProject();
+    addCancelInits();
     })
+
 };
-
-
 
 function addCancelInits() {
     const cancelingStuff = document.querySelector('.cancelingStuff');
-    initListener(cancelingStuff, 'cancel', 'click');
+    const todoHolder = document.querySelector('#modalBox')
+    cancelingStuff.addEventListener('click', () => {
+    todoHolder.remove();
+    });
+
     const addStuffToList = document.querySelector('.addingStuff');
-    initListener(addStuffToList, 'addProjectTl', 'click');
+    addStuffToList.addEventListener('click', () => {
+        makingObj();
+        todoHolder.remove();
+        objCreation();
+        createNewProject();
+        addCancelInits();
+    });
+
 }
+
 
 const ProjectsFac = function(projectName) {
     return {
@@ -53,8 +37,10 @@ const ProjectsFac = function(projectName) {
 }
 
 function makingObj() {
-    const newProj = ProjectsFac(inputForm.value);
-    projArr.push(newProj);
+    const newProject = ProjectsFac(inputForm.value);
+    todoListArray.push(newProject);
 };
+
+
 
 export {newProjects};
