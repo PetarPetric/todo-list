@@ -1,21 +1,27 @@
-import {createNewProject, objCreation, inputForm} from './projectListDom';
+import {createNewProject, objCreation, inputForm, funnyFunction, todoSettings} from './projectListDom';
+
 
 const todoListArray = [];
+let newProject;
+let todoHolder;
 
 const newProjects = () => {
     const btnAdd = document.querySelector('.btnAdd');
     btnAdd.addEventListener('click', () => {
+    if(!todoHolder){
     createNewProject();
     addCancelInits();
+        }
     })
 
 };
 
 function addCancelInits() {
+    todoHolder = document.querySelector('#modalBox');
     const cancelingStuff = document.querySelector('.cancelingStuff');
-    const todoHolder = document.querySelector('#modalBox')
     cancelingStuff.addEventListener('click', () => {
     todoHolder.remove();
+    addCancelInits();
     });
 
     const addStuffToList = document.querySelector('.addingStuff');
@@ -25,22 +31,20 @@ function addCancelInits() {
         objCreation();
         createNewProject();
         addCancelInits();
+        funnyFunction();
     });
-
 }
 
-
-const ProjectsFac = function(projectName) {
+const ProjectsFactory = function(projectName) {
     return {
         projectName
     }
 }
 
 function makingObj() {
-    const newProject = ProjectsFac(inputForm.value);
+    newProject = ProjectsFactory(inputForm.value);
     todoListArray.push(newProject);
 };
 
 
-
-export {newProjects};
+export {newProjects, makingObj, todoListArray, newProject};
