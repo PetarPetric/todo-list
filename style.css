@@ -115,8 +115,10 @@
 }
 
 .todoDetails {
+  text-align: center;
   display: block;
   margin: auto;
+  padding: 5px;
   margin-top: 40px;
   height: 70%;
   width: 30%;
