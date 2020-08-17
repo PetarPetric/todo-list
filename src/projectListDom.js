@@ -9,104 +9,105 @@ let todoDetails;
 const divProjectList = [];
 
 const createNewProject = () => {
-  initModal();
-  inputInit();
+initModal();
+inputInit();
 }
 
 const initModal = () => {
-  modalForm = document.createElement('div');
-  modalPlace = document.querySelector('.actualProjects');
-  modalForm.setAttribute('id', 'modalBox');
-  modalPlace.append(modalForm);
+modalForm = document.createElement('div');
+modalPlace = document.querySelector('.actualProjects');
+modalForm.setAttribute('id', 'modalBox');
+modalPlace.append(modalForm);
 
 }
 
 const inputInit = () => {
 
-  inputForm = document.createElement('input');
-  const addingStuff = document.createElement('button');
-  const cancelStuff = document.createElement('button');
-  const buttonDiv = document.createElement('div');
-  buttonDiv.setAttribute('id', 'buttonDiv');
-  
-  inputForm.classList.add('justInput');
-  inputForm.setAttribute('name', 'justInput');
-  
-  addingStuff.classList.add('addingStuff');
-  cancelStuff.classList.add('cancelingStuff');
-  
-  addingStuff.textContent = "Add";
-  cancelStuff.textContent = "Cancel";
-  
-  modalForm.append(inputForm);
-  modalForm.append(buttonDiv);
-  buttonDiv.append(addingStuff);
-  buttonDiv.append(cancelStuff);
+inputForm = document.createElement('input');
+const addingStuff = document.createElement('button');
+const cancelStuff = document.createElement('button');
+const buttonDiv = document.createElement('div');
+buttonDiv.setAttribute('id', 'buttonDiv');
 
-  modalForm.classList.add('inputForm');
-  inputForm.placeholder = "Project Name";
+inputForm.classList.add('justInput');
+inputForm.setAttribute('name', 'justInput');
+
+addingStuff.classList.add('addingStuff');
+cancelStuff.classList.add('cancelingStuff');
+
+addingStuff.textContent = "Add";
+cancelStuff.textContent = "Cancel";
+
+modalForm.append(inputForm);
+modalForm.append(buttonDiv);
+buttonDiv.append(addingStuff);
+buttonDiv.append(cancelStuff);
+
+modalForm.classList.add('inputForm');
+inputForm.placeholder = "Project Name";
 };
-
-// 
 
 const createdProject = () => {
 
-  const newProjectCreated = document.createElement('div');
-  const projectCreatedTitle = document.createElement('h5');
-  const projectCreatedTxt = newProject.projectName;
+const newProjectCreated = document.createElement('div');
+const projectCreatedTitle = document.createElement('h5');
+const projectCreatedTxt = newProject.projectName;
 
-  modalPlace.append(newProjectCreated);
-  newProjectCreated.append(projectCreatedTitle);
-  projectCreatedTitle.append(projectCreatedTxt);
-  newProjectCreated.classList.add('projectClass');
-  divProjectList.push(newProjectCreated);
+modalPlace.append(newProjectCreated);
+newProjectCreated.append(projectCreatedTitle);
+projectCreatedTitle.append(projectCreatedTxt);
+newProjectCreated.classList.add('projectClass');
+newProjectCreated.setAttribute('id', newProject.projectName);
+divProjectList.push(newProjectCreated);
 };
 
-// Everything thats inside Todo Modal //  
+// Everything thats inside Todo Modal //
 
 const todoModalDetails = () => {
-  let todoTitle = document.createElement('h5');
-  
-  const todoModal = () => {
-    todoDetails = document.createElement('div');
-    todoDetails.classList.add('todoDetails');
-    todoOverView = document.querySelector('.projectOverview');
-    todoOverView.append(todoDetails);
-  };
+let todoTitle = document.createElement('h5');
 
-  const insideTodo = (arg) => {
-    const cancelIcon = document.createElement('button');
-    const headerDiv = document.createElement('div');
-    cancelIcon.innerHTML = '<i class="far fa-window-close"></i>'
-    cancelIcon.setAttribute('id', 'cancelIcon');
-    headerDiv.setAttribute('id', 'modalHeader');
-    todoDetails.append(headerDiv);
-    headerDiv.append(todoTitle);
-    headerDiv.append(cancelIcon); 
-    todoTitle.textContent = todoListArray[arg].projectName;  
+const todoModal = () => {
+todoDetails = document.createElement('div');
+todoDetails.classList.add('todoDetails');
+todoOverView = document.querySelector('.projectOverview');
+todoOverView.append(todoDetails);
+};
+d
+const insideTodo = (arg) => {
+const cancelIcon = document.createElement('button');
+const headerDiv = document.createElement('div');
+cancelIcon.innerHTML = ''
+cancelIcon.setAttribute('id', 'cancelIcon');
+headerDiv.setAttribute('id', 'modalHeader');
+todoDetails.append(headerDiv);
+headerDiv.append(todoTitle);
+headerDiv.append(cancelIcon);
+todoTitle.textContent = todoListArray[arg].projectName;
 
-  };
+};
 
-  const removeProject = (delArg) => {
-  todoDetails.remove();
-  todoListArray.splice(delArg, 1);
-  divProjectList.splice(delArg, 1);
-  };
+const removeProject = (delArg) => {
+todoDetails.remove();
+todoListArray.splice(delArg, 1);
+divProjectList.splice(delArg, 1);
+console.log(todoListArray);
+console.log(divProjectList);
+};
 
-  const cleanInsideTodo = () => {
-  todoDetails.remove();
-  };
+const cleanInsideTodo = () => {
+todoDetails.remove();
+};
 
-  return {
-    insideTodo, cleanInsideTodo, todoModal
-  };
+return {
+insideTodo, cleanInsideTodo, todoModal, removeProject
+};
 };
 
 
 const objCreation = () => {
-  if(inputForm.value === "") {
-    alert("CANT CREATE EMPTY PROJECT");
-  } else {createdProject()};
+if(inputForm.value === "") {
+alert("CANT CREATE EMPTY PROJECT");
+} else {createdProject()};
 };
 
 export {initModal, inputInit, createNewProject, createdProject, objCreation, inputForm, todoModalDetails, todoDetails, divProjectList};
