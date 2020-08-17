@@ -1,9 +1,25 @@
-import {createNewProject, objCreation, inputForm, generatingFunction, todoSettings} from './projectListDom';
+import {createNewProject, objCreation, inputForm, todoModalDetails, todoDetails, divProjectList} from './projectListDom';
 
 
 const todoListArray = [];
 let newProject;
 let todoHolder;
+
+const selectingProject = () => {
+    divProjectList.forEach(clickable => {
+      clickable.addEventListener('click', (e) => {
+      let indexNum = divProjectList.indexOf(e.currentTarget);
+        if(!todoDetails){
+          todoModalDetails().todoModal();
+          todoModalDetails().insideTodo(indexNum);
+        } else {
+          todoModalDetails().cleanInsideTodo();
+          todoModalDetails().todoModal();
+          todoModalDetails().insideTodo(indexNum);
+        };
+      });
+    }); 
+  };
 
 const newProjects = () => {
     const btnAdd = document.querySelector('.btnAdd');
@@ -11,9 +27,8 @@ const newProjects = () => {
     if(!todoHolder){
     createNewProject();
     addCancelInits();
-        }
-    })
-
+        };
+    });
 };
 
 function addCancelInits() {
@@ -31,8 +46,9 @@ function addCancelInits() {
         objCreation();
         createNewProject();
         addCancelInits();
-        generatingFunction();
+        selectingProject();
     });
+
 }
 
 const ProjectsFactory = function(projectName) {
@@ -47,4 +63,4 @@ function makingObj() {
 };
 
 
-export {newProjects, makingObj, todoListArray, newProject};
+export {newProjects, todoListArray, newProject};

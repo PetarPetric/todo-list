@@ -1,11 +1,10 @@
-import {makingObj, todoListArray, newProject} from './projectLogic';
+import {todoListArray, newProject} from './projectLogic';
 
 let modalPlace;
 let modalForm;
 let inputForm;
 let todoOverView;
 let todoDetails;
-
 
 const divProjectList = [];
 
@@ -63,29 +62,10 @@ const createdProject = () => {
   divProjectList.push(newProjectCreated);
 };
 
-// Function that generates modal once clicked on project in project list //
-
-const generatingFunction = () => {
-  divProjectList.forEach(clickable => {
-    clickable.addEventListener('click', (e) => {
-    let indexNum = divProjectList.indexOf(e.currentTarget);
-      if(!todoDetails){
-        todoModalDetails().todoModal();
-        todoModalDetails().insideTodo(indexNum);
-      } else {
-        todoModalDetails().cleanInsideTodo();
-        todoModalDetails().todoModal();
-        todoModalDetails().insideTodo(indexNum);
-      };
-    });
-  }); 
-};
-
-
-// Everything thats niside Todo Modal //  
+// Everything thats inside Todo Modal //  
 
 const todoModalDetails = () => {
-  let todoTitle = document.createElement('h2');
+  let todoTitle = document.createElement('h5');
   
   const todoModal = () => {
     todoDetails = document.createElement('div');
@@ -95,11 +75,23 @@ const todoModalDetails = () => {
   };
 
   const insideTodo = (arg) => {
-    
-    todoDetails.append(todoTitle);
-    todoTitle.textContent = todoListArray[arg].projectName;
+    const cancelIcon = document.createElement('button');
+    const headerDiv = document.createElement('div');
+    cancelIcon.innerHTML = '<i class="far fa-window-close"></i>'
+    cancelIcon.setAttribute('id', 'cancelIcon');
+    headerDiv.setAttribute('id', 'modalHeader');
+    todoDetails.append(headerDiv);
+    headerDiv.append(todoTitle);
+    headerDiv.append(cancelIcon); 
+    todoTitle.textContent = todoListArray[arg].projectName;  
 
-  }
+  };
+
+  const removeProject = (delArg) => {
+  todoDetails.remove();
+  todoListArray.splice(delArg, 1);
+  divProjectList.splice(delArg, 1);
+  };
 
   const cleanInsideTodo = () => {
   todoDetails.remove();
@@ -117,4 +109,4 @@ const objCreation = () => {
   } else {createdProject()};
 };
 
-export {initModal, inputInit, createNewProject, createdProject, objCreation, inputForm, generatingFunction, todoModalDetails};
+export {initModal, inputInit, createNewProject, createdProject, objCreation, inputForm, todoModalDetails, todoDetails, divProjectList};

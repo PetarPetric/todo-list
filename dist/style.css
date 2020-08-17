@@ -116,11 +116,28 @@
 
 .todoDetails {
   text-align: center;
-  display: block;
   margin: auto;
   padding: 5px;
   margin-top: 40px;
   height: 70%;
   width: 30%;
   border: black solid 3px;
+}
+
+#modalHeader {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: black solid 3px;
+  font-size: 40px;
+
+}
+
+#modalHeader button {
+  height: 20px;
+  width: 30px;
+  text-align: center;
+}
+
+#modalHeader h5 {
+  margin-left: 20px;
 }
