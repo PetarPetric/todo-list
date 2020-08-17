@@ -1,4 +1,4 @@
-import {createNewProject, objCreation, inputForm, funnyFunction, todoSettings} from './projectListDom';
+import {createNewProject, objCreation, inputForm, generatingFunction, todoSettings} from './projectListDom';
 
 
 const todoListArray = [];
@@ -31,7 +31,7 @@ function addCancelInits() {
         objCreation();
         createNewProject();
         addCancelInits();
-        funnyFunction();
+        generatingFunction();
     });
 }
 

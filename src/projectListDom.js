@@ -5,6 +5,8 @@ let modalForm;
 let inputForm;
 let todoOverView;
 let todoDetails;
+
+
 const divProjectList = [];
 
 const createNewProject = () => {
@@ -46,6 +48,8 @@ const inputInit = () => {
   inputForm.placeholder = "Project Name";
 };
 
+// 
+
 const createdProject = () => {
 
   const newProjectCreated = document.createElement('div');
@@ -59,29 +63,52 @@ const createdProject = () => {
   divProjectList.push(newProjectCreated);
 };
 
+// Function that generates modal once clicked on project in project list //
 
-const funnyFunction = () => {
+const generatingFunction = () => {
   divProjectList.forEach(clickable => {
     clickable.addEventListener('click', (e) => {
-    let indxNum = divProjectList.indexOf(e.currentTarget);
-    console.log(todoListArray[indxNum].projectName);
+    let indexNum = divProjectList.indexOf(e.currentTarget);
+      if(!todoDetails){
+        todoModalDetails().todoModal();
+        todoModalDetails().insideTodo(indexNum);
+      } else {
+        todoModalDetails().cleanInsideTodo();
+        todoModalDetails().todoModal();
+        todoModalDetails().insideTodo(indexNum);
+      };
     });
   }); 
 };
 
-const todoSettings = () => {
-  todoDetails = document.createElement('div');
-  todoDetails.classList.add('todoDetails');
-  todoOverView = document.querySelector('.projectOverview');
-  todoOverView.append(todoDetails);
-};
 
-const insideTodo = (arg) => {
-  const todoTitle = document.createElement('h6');
-  todoDetails.append(todoTitle);
-  todoTitle.textContent = '';
-  todoTitle.textContent = arg;
-}
+// Everything thats niside Todo Modal //  
+
+const todoModalDetails = () => {
+  let todoTitle = document.createElement('h2');
+  
+  const todoModal = () => {
+    todoDetails = document.createElement('div');
+    todoDetails.classList.add('todoDetails');
+    todoOverView = document.querySelector('.projectOverview');
+    todoOverView.append(todoDetails);
+  };
+
+  const insideTodo = (arg) => {
+    
+    todoDetails.append(todoTitle);
+    todoTitle.textContent = todoListArray[arg].projectName;
+
+  }
+
+  const cleanInsideTodo = () => {
+  todoDetails.remove();
+  };
+
+  return {
+    insideTodo, cleanInsideTodo, todoModal
+  };
+};
 
 
 const objCreation = () => {
@@ -90,4 +117,4 @@ const objCreation = () => {
   } else {createdProject()};
 };
 
-export {initModal, inputInit, createNewProject, createdProject, objCreation, inputForm, funnyFunction, todoSettings};
+export {initModal, inputInit, createNewProject, createdProject, objCreation, inputForm, generatingFunction, todoModalDetails};
