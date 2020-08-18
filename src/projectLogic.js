@@ -37,13 +37,13 @@ const removeButton = (delArg, delArg2 = 0) => {
 
 // creates new Projects
 const newProjects = () => {
-const btnAdd = document.querySelector('.btnAdd');
-btnAdd.addEventListener('click', () => {
-if(!todoHolder){
-createNewProject();
-addCancelInits();
-};
-});
+  const btnAdd = document.querySelector('.btnAdd');
+  btnAdd.addEventListener('click', () => {
+    if(!todoHolder){
+    createNewProject();
+    addCancelInits();
+    };
+  });
 };
 // adding and canceling Todos
 function addCancelInits() {
