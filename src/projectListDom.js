@@ -72,7 +72,7 @@ todoDetails.classList.add('todoDetails');
 todoOverView = document.querySelector('.projectOverview');
 todoOverView.append(todoDetails);
 };
-d
+
 const insideTodo = (arg) => {
 const cancelIcon = document.createElement('button');
 const headerDiv = document.createElement('div');
