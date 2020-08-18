@@ -76,7 +76,7 @@ todoOverView.append(todoDetails);
 const insideTodo = (arg) => {
 const cancelIcon = document.createElement('button');
 const headerDiv = document.createElement('div');
-cancelIcon.innerHTML = ''
+cancelIcon.innerHTML = '<i class="far fa-window-close"></i>'
 cancelIcon.setAttribute('id', 'cancelIcon');
 headerDiv.setAttribute('id', 'modalHeader');
 todoDetails.append(headerDiv);

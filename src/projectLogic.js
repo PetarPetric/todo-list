@@ -24,7 +24,7 @@ removeButton(indexNum, newArgument);
 
 
 // remove button
-const removeButton = (delArg, delArg2) => {
+const removeButton = (delArg, delArg2 = 0) => {
 const cancelIcon = document.querySelector('#cancelIcon');
 cancelIcon.addEventListener('click', () => {
 let newDeletionThing = document.getElementById(delArg2.textContent)
@@ -47,30 +47,31 @@ addCancelInits();
 };
 // adding and canceling Todos
 function addCancelInits() {
-todoHolder = document.querySelector('#modalBox');
-const cancelingStuff = document.querySelector('.cancelingStuff');
-cancelingStuff.addEventListener('click', () => {
-todoHolder.remove();
-addCancelInits();
-});
+  todoHolder = document.querySelector('#modalBox');
+  const cancelingStuff = document.querySelector('.cancelingStuff');
+  cancelingStuff.addEventListener('click', () => {
+    todoHolder.remove();
+    addCancelInits();
+  });
 
-const addStuffToList = document.querySelector('.addingStuff');
-addStuffToList.addEventListener('click', () => {
-makingObj();
-todoHolder.remove();
-objCreation();
-createNewProject();
-addCancelInits();
-selectingProject();
-});
+  const addStuffToList = document.querySelector('.addingStuff');
+  addStuffToList.addEventListener('click', () => {
+    makingObj();
+    todoHolder.remove();
+    objCreation();
+    createNewProject();
+    addCancelInits();
+    selectingProject();
+    });
 
-}
+  };
 
-const ProjectsFactory = function(projectName) {
-return {
-projectName
-}
-}
+  const ProjectsFactory = function(projectName) {
+
+    return {
+      projectName
+  };
+};
 
 function makingObj() {
 newProject = ProjectsFactory(inputForm.value);
