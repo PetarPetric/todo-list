@@ -5,33 +5,33 @@ let newProject;
 let todoHolder;
 
 const selectingProject = () => {
-divProjectList.forEach(clickable => {
-clickable.addEventListener('click', (e) => {
-let indexNum = divProjectList.indexOf(e.currentTarget);
-let newArgument = document.getElementById(e.target.parentNode.textContent);
-if(!todoDetails) {
-todoModalDetails().todoModal();
-todoModalDetails().insideTodo(indexNum);
-} else {
-todoModalDetails().cleanInsideTodo();
-todoModalDetails().todoModal();
-todoModalDetails().insideTodo(indexNum);
-};
-removeButton(indexNum, newArgument);
-});
-});
+  divProjectList.forEach(clickable => {
+  clickable.addEventListener('click', (e) => {
+  let indexNum = divProjectList.indexOf(e.currentTarget);
+    let newArgument = document.getElementById(e.target.parentNode.textContent);
+    if(!todoDetails) {
+      todoModalDetails().todoModal();
+      todoModalDetails().insideTodo(indexNum);
+    } else {
+      todoModalDetails().cleanInsideTodo();
+      todoModalDetails().todoModal();
+      todoModalDetails().insideTodo(indexNum);
+    };
+    removeButton(indexNum, newArgument);
+    });
+  });
 };
 
 
 // remove button
 const removeButton = (delArg, delArg2 = 0) => {
-const cancelIcon = document.querySelector('#cancelIcon');
-cancelIcon.addEventListener('click', () => {
-let newDeletionThing = document.getElementById(delArg2.textContent)
-console.log(newDeletionThing)
-newDeletionThing.remove()
-todoModalDetails().removeProject(delArg);
-});
+  const cancelIcon = document.querySelector('#cancelIcon');
+  cancelIcon.addEventListener('click', () => {
+    let newDeletionThing = document.getElementById(delArg2.textContent)
+    console.log(newDeletionThing.textContent);
+    newDeletionThing.remove()
+    todoModalDetails().removeProject(delArg);
+  });
 };
 
 
@@ -63,7 +63,6 @@ function addCancelInits() {
     addCancelInits();
     selectingProject();
     });
-
   };
 
   const ProjectsFactory = function(projectName) {
@@ -80,3 +79,4 @@ todoListArray.push(newProject);
 
 
 export {newProjects, todoListArray, newProject};
+

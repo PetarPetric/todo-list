@@ -141,3 +141,13 @@
 #modalHeader h5 {
   margin-left: 20px;
 }
+
+.modalBody {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.modalBody button {
+  margin-right: 5px;
+}
+

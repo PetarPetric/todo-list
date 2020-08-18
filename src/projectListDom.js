@@ -73,15 +73,30 @@ todoOverView = document.querySelector('.projectOverview');
 todoOverView.append(todoDetails);
 };
 
+// stuff inside Project Modal //
+
 const insideTodo = (arg) => {
 const cancelIcon = document.createElement('button');
 const headerDiv = document.createElement('div');
-cancelIcon.innerHTML = '<i class="far fa-window-close"></i>'
+const allTasks = document.createElement('div');
+const taskInput = document.createElement('input');
+const addTask = document.createElement('button');
+const dueDate = document.createElement('input');
+taskInput.classList.add('taskInput');
+allTasks.classList.add('modalBody');
 cancelIcon.setAttribute('id', 'cancelIcon');
 headerDiv.setAttribute('id', 'modalHeader');
+dueDate.setAttribute('type', 'date');
+addTask.innerHTML = '<i class="fas fa-plus-circle"></i>'
+cancelIcon.innerHTML = '<i class="far fa-window-close"></i>'
 todoDetails.append(headerDiv);
+todoDetails.append(allTasks);
+allTasks.append(addTask);
+allTasks.append(taskInput);
+allTasks.append(dueDate);
 headerDiv.append(todoTitle);
 headerDiv.append(cancelIcon);
+
 todoTitle.textContent = todoListArray[arg].projectName;
 
 };
