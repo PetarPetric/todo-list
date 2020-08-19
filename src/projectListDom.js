@@ -72,92 +72,99 @@ const inputInit = () => {
   todoOverView.append(todoDetails);
 };
 
-// stuff inside Project Modal //
+  // stuff inside Project Modal //
 
-const insideTodo = (arg) => {
-  const cancelIcon = document.createElement('button');
-  const headerDiv = document.createElement('div');
-  const modalBody = document.createElement('div');
-  const allTasks = document.createElement('div');
-  const taskInput = document.createElement('input');
-  const addTaskButtn = document.createElement('button');
-  const dueDate = document.createElement('input');
-  const dateDiv = document.createElement('div');
-  const paraDate = document.createElement('h5');
-  const paraTaskDiv = document.createElement('div');
-  const paraTask = document.createElement('h3');
+  const insideTodo = (arg) => {
+    const cancelIcon = document.createElement('button');
+    const headerDiv = document.createElement('div');
+    const modalBody = document.createElement('div');
+    const allTasks = document.createElement('div');
+    const taskInput = document.createElement('input');
+    const addTaskButtn = document.createElement('button');
+    const dueDate = document.createElement('input');
+    const dateDiv = document.createElement('div');
+    const paraDate = document.createElement('h5');
+    const paraTaskDiv = document.createElement('div');
+    const paraTask = document.createElement('h3');
+
+    const priorityDiv = document.createElement('div');
+    const priority = document.createElement('h2');
+    const priorities = document.createElement('select');
+    const lowPriority = document.createElement('option');
+    const mediumPriority = document.createElement('option');
+    const highPriority = document.createElement('option');
+    const submitButtonDiv = document.createElement('div');
+    const submitButton = document.createElement('button');
+
+    submitButton.textContent = "Submit";
+    paraDate.textContent = "Finish untill:";
+    paraTask.textContent = "Tasks:";
+    priority.textContent = "Priority:";
+    lowPriority.textContent = "Low";
+    mediumPriority.textContent = "Medium";
+    highPriority.textContent = "High";
+
+
+    // priorities values
+    lowPriority.setAttribute('value', 'low');
+    mediumPriority.setAttribute('value', 'medium');
+    highPriority.setAttribute('value', 'high');
+
+    // adding classes, IDs //
+
+    submitButtonDiv.classList.add('submitButtonDiv');
+    dateDiv.classList.add('dateDiv');
+    allTasks.classList.add('allTasks');
+    taskInput.classList.add('taskInput');
+    modalBody.classList.add('modalBody');
+    cancelIcon.setAttribute('id', 'cancelIcon');
+    headerDiv.setAttribute('id', 'modalHeader');
+    priorityDiv.classList.add('priorityDiv');
+    dueDate.setAttribute('type', 'date');
+    addTaskButtn.innerHTML = '<i class="fas fa-plus-circle"></i>';
+    cancelIcon.innerHTML = '<i class="far fa-window-close"></i>';
   
-  const priorityDiv = document.createElement('div');
-  const priority = document.createElement('h2');
-  const priorities = document.createElement('select');
-  const lowPriority = document.createElement('option');
-  const mediumPriority = document.createElement('option');
-  const highPriority = document.createElement('option');
+    // appending stuff//
+    priorities.append(lowPriority, mediumPriority, highPriority);
+    todoDetails.append(headerDiv);
+    todoDetails.append(modalBody);
+    modalBody.append(priorityDiv);
+    modalBody.append(dateDiv);
+    modalBody.append(paraTaskDiv);
+    modalBody.append(allTasks);
+    modalBody.append(submitButtonDiv);
+    submitButtonDiv.append(submitButton);
+    priorityDiv.append(priority);
+    priorityDiv.append(priorities);
+    dateDiv.append(paraDate);  
+    dateDiv.append(dueDate);
+    allTasks.append(addTaskButtn);
+    allTasks.append(taskInput);
+    paraTaskDiv.append(paraTask);
+    headerDiv.append(todoTitle);
+    headerDiv.append(cancelIcon);
 
-  paraDate.textContent = "Finish untill:";
-  paraTask.textContent = "Tasks:";
-  priority.textContent = "Priority:";
-  lowPriority.textContent = "Low";
-  mediumPriority.textContent = "Medium";
-  highPriority.textContent = "High";
+    todoTitle.textContent = todoListArray[arg].projectName;
+  };
 
-  // priorities values
-  lowPriority.setAttribute('value', 'low');
-  mediumPriority.setAttribute('value', 'medium');
-  highPriority.setAttribute('value', 'high');
+  // Remove project function//
 
-  // adding classes, IDs //
-
-  dateDiv.classList.add('dateDiv');
-  allTasks.classList.add('allTasks');
-  taskInput.classList.add('taskInput');
-  modalBody.classList.add('modalBody');
-  cancelIcon.setAttribute('id', 'cancelIcon');
-  headerDiv.setAttribute('id', 'modalHeader');
-  priorityDiv.classList.add('priorityDiv');
-  dueDate.setAttribute('type', 'date');
-  addTaskButtn.innerHTML = '<i class="fas fa-plus-circle"></i>';
-  cancelIcon.innerHTML = '<i class="far fa-window-close"></i>';
-  
-  // appending stuff//
-  priorities.append(lowPriority, mediumPriority, highPriority);
-  todoDetails.append(headerDiv);
-  todoDetails.append(modalBody);
-  modalBody.append(priorityDiv);
-  modalBody.append(dateDiv);
-  modalBody.append(paraTaskDiv);
-  modalBody.append(allTasks);
-  priorityDiv.append(priority);
-  priorityDiv.append(priorities);
-  dateDiv.append(paraDate);  
-  dateDiv.append(dueDate);
-  allTasks.append(addTaskButtn);
-  allTasks.append(taskInput);
-  paraTaskDiv.append(paraTask);
-  headerDiv.append(todoTitle);
-  headerDiv.append(cancelIcon);
-
-  todoTitle.textContent = todoListArray[arg].projectName;
-};
-
-// Remove project function//
-
-const removeProject = (delArg) => {
+  const removeProject = (delArg) => {
   todoDetails.remove();
   todoListArray.splice(delArg, 1);
   divProjectList.splice(delArg, 1);
   console.log(todoListArray);
   console.log(divProjectList);
-};
+  };
 
 
-const cleanInsideTodo = () => {
-todoDetails.remove();
-};
+  const cleanInsideTodo = () => {
+    todoDetails.remove();
+  };
 
-return {
-insideTodo, cleanInsideTodo, todoModal, removeProject
-};
+  return {
+    insideTodo, cleanInsideTodo, todoModal, removeProject
+  };
 };
 
 
