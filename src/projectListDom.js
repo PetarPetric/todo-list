@@ -86,9 +86,27 @@ const insideTodo = (arg) => {
   const paraDate = document.createElement('h5');
   const paraTaskDiv = document.createElement('div');
   const paraTask = document.createElement('h3');
+  
+  const priorityDiv = document.createElement('div');
+  const priority = document.createElement('h2');
+  const priorities = document.createElement('select');
+  const lowPriority = document.createElement('option');
+  const mediumPriority = document.createElement('option');
+  const highPriority = document.createElement('option');
 
   paraDate.textContent = "Finish untill:";
   paraTask.textContent = "Tasks:";
+  priority.textContent = "Priority:";
+  lowPriority.textContent = "Low";
+  mediumPriority.textContent = "Medium";
+  highPriority.textContent = "High";
+
+  // priorities values
+  lowPriority.setAttribute('value', 'low');
+  mediumPriority.setAttribute('value', 'medium');
+  highPriority.setAttribute('value', 'high');
+
+  // adding classes, IDs //
 
   dateDiv.classList.add('dateDiv');
   allTasks.classList.add('allTasks');
@@ -96,14 +114,21 @@ const insideTodo = (arg) => {
   modalBody.classList.add('modalBody');
   cancelIcon.setAttribute('id', 'cancelIcon');
   headerDiv.setAttribute('id', 'modalHeader');
+  priorityDiv.classList.add('priorityDiv');
   dueDate.setAttribute('type', 'date');
-  addTaskButtn.innerHTML = '<i class="fas fa-plus-circle"></i>'
-  cancelIcon.innerHTML = '<i class="far fa-window-close"></i>'
+  addTaskButtn.innerHTML = '<i class="fas fa-plus-circle"></i>';
+  cancelIcon.innerHTML = '<i class="far fa-window-close"></i>';
+  
+  // appending stuff//
+  priorities.append(lowPriority, mediumPriority, highPriority);
   todoDetails.append(headerDiv);
   todoDetails.append(modalBody);
+  modalBody.append(priorityDiv);
   modalBody.append(dateDiv);
   modalBody.append(paraTaskDiv);
   modalBody.append(allTasks);
+  priorityDiv.append(priority);
+  priorityDiv.append(priorities);
   dateDiv.append(paraDate);  
   dateDiv.append(dueDate);
   allTasks.append(addTaskButtn);
@@ -113,8 +138,9 @@ const insideTodo = (arg) => {
   headerDiv.append(cancelIcon);
 
   todoTitle.textContent = todoListArray[arg].projectName;
-
 };
+
+// Remove project function//
 
 const removeProject = (delArg) => {
   todoDetails.remove();
@@ -123,6 +149,7 @@ const removeProject = (delArg) => {
   console.log(todoListArray);
   console.log(divProjectList);
 };
+
 
 const cleanInsideTodo = () => {
 todoDetails.remove();

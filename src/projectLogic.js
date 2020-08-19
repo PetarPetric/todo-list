@@ -73,8 +73,8 @@ function addCancelInits() {
 };
 
 function makingObj() {
-newProject = ProjectsFactory(inputForm.value);
-todoListArray.push(newProject);
+  newProject = ProjectsFactory(inputForm.value);
+  todoListArray.push(newProject);
 };
 
 
