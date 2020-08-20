@@ -127,6 +127,7 @@ const todoModalDetails = () => {
     dueDate.setAttribute('type', 'date');
     addTaskButtn.innerHTML = '<i class="fas fa-plus-circle"></i>';
     cancelIcon.innerHTML = '<i class="far fa-window-close"></i>';
+    taskInput.placeholder = 'Add your task here';
   
     // appending stuff//
     priorities.append(lowPriority, mediumPriority, highPriority);
@@ -157,13 +158,22 @@ const todoModalDetails = () => {
     for(let i = 0; i < arr.length; i++) {
       let addedTask = document.createElement('div');
       addedTask.setAttribute('id', `task-${[i]}`);
+      addedTask.classList.add('smallTasks');
       allTasks.append(addedTask);
       let newTask = document.createTextNode(arr[i])
       console.log(arr[i]);
-      newTask.innerHTML = '';
-      allTasks.append(newTask);
+      addedTask.append(newTask);
     };
+  };
 
+  function createOneTask() {
+    let allTasks = document.querySelector('.allTasks');
+    let addedTask = document.createElement('div');
+    addedTask.classList.add('smallTasks');
+    allTasks.append(addedTask);
+    let newTask = document.querySelector('.taskInput')
+    addedTask.append(newTask.value);
+    newTask.value = "";
   };
 
 
@@ -184,7 +194,7 @@ const todoModalDetails = () => {
   };
 
   return {
-    insideTodo, cleanInsideTodo, todoModal, removeProject, createDomTask
+    insideTodo, cleanInsideTodo, todoModal, removeProject, createDomTask,createOneTask
   };
 };
 

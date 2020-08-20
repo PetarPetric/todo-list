@@ -84,10 +84,9 @@ function makingObj() {
 
 function pushTaskToObj(num) {
   const taskInput = document.querySelector('.taskInput');
-  
   let toDoTasks = todoListArray[num].todoArr
   toDoTasks.push(taskInput.value);
-  todoModalDetails().createDomTask(toDoTasks);
+  todoModalDetails().createOneTask();
 
 };
 
@@ -99,7 +98,13 @@ function readTasks(num) {
 const taskAdded = (num) => {
   let addTaskButton = document.querySelector('.addTaskButton');
   addTaskButton.addEventListener('click', () => {
-  pushTaskToObj(num);
+  const taskInput = document.querySelector('.taskInput');
+  if(taskInput.value == "") {
+  alert('Task must have a name')
+  } else {
+    pushTaskToObj(num);
+    taskInput.value = "";
+  }
   });
 };
 
