@@ -78,9 +78,10 @@ const todoModalDetails = () => {
     const cancelIcon = document.createElement('button');
     const headerDiv = document.createElement('div');
     const modalBody = document.createElement('div');
-    const allTasks = document.createElement('div');
+    const addTask = document.createElement('div');
     const taskInput = document.createElement('input');
     const addTaskButtn = document.createElement('button');
+    const allTasks = document.createElement('allTasks');
     const dueDate = document.createElement('input');
     const dateDiv = document.createElement('div');
     const paraDate = document.createElement('h5');
@@ -115,6 +116,7 @@ const todoModalDetails = () => {
     submitButtonDiv.classList.add('submitButtonDiv');
     dueDate.setAttribute('id', 'dateInput');
     dateDiv.classList.add('dateDiv');
+    addTask.classList.add('addTask');
     allTasks.classList.add('allTasks');
     taskInput.classList.add('taskInput');
     modalBody.classList.add('modalBody');
@@ -134,14 +136,15 @@ const todoModalDetails = () => {
     modalBody.append(dateDiv);
     modalBody.append(paraTaskDiv);
     modalBody.append(allTasks);
+    modalBody.append(addTask);
     modalBody.append(submitButtonDiv);
     submitButtonDiv.append(submitButton);
     priorityDiv.append(priority);
     priorityDiv.append(priorities);
     dateDiv.append(paraDate);  
     dateDiv.append(dueDate);
-    allTasks.append(addTaskButtn);
-    allTasks.append(taskInput);
+    addTask.append(addTaskButtn);
+    addTask.append(taskInput);
     paraTaskDiv.append(paraTask);
     headerDiv.append(todoTitle);
     headerDiv.append(cancelIcon);
@@ -149,17 +152,17 @@ const todoModalDetails = () => {
     todoTitle.textContent = todoListArray[arg].projectName;
   };
 
-   function createDomTask(...arr) {
+   function createDomTask(arr) {
     let allTasks = document.querySelector('.allTasks');
-    let addedTask = document.createElement('div');
-    let newTask = document.createTextNode('');
-    addedTask.classList.add('tasks');
-    for(let i = 0; i < arr; i++) {
-      newTask = '';
-      newTask = arr[i];
+    for(let i = 0; i < arr.length; i++) {
+      let addedTask = document.createElement('div');
+      addedTask.setAttribute('id', `task-${[i]}`);
+      allTasks.append(addedTask);
+      let newTask = document.createTextNode(arr[i])
       console.log(arr[i]);
-      allTasks.append(newTask.textContent);
-    }
+      newTask.innerHTML = '';
+      allTasks.append(newTask);
+    };
 
   };
 

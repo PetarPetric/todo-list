@@ -13,11 +13,13 @@ const selectingProject = () => {
       todoModalDetails().todoModal();
       todoModalDetails().insideTodo(indexNum);
       taskAdded(indexNum);
+      readTasks(indexNum)
     } else {
       todoModalDetails().cleanInsideTodo();
       todoModalDetails().todoModal();
       todoModalDetails().insideTodo(indexNum);
       taskAdded(indexNum);
+      readTasks(indexNum)
     };
     removeButton(indexNum, newArgument);
     });
@@ -82,11 +84,17 @@ function makingObj() {
 
 function pushTaskToObj(num) {
   const taskInput = document.querySelector('.taskInput');
+  
   let toDoTasks = todoListArray[num].todoArr
   toDoTasks.push(taskInput.value);
-  todoModalDetails().createDomTask(...toDoTasks);
+  todoModalDetails().createDomTask(toDoTasks);
 
 };
+
+function readTasks(num) {
+  let toDoTasks = todoListArray[num].todoArr
+  todoModalDetails().createDomTask(toDoTasks);
+}
 
 const taskAdded = (num) => {
   let addTaskButton = document.querySelector('.addTaskButton');
