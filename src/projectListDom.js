@@ -13,14 +13,14 @@ const createNewProject = () => {
   inputInit();
 };
 
-const initModal = () => {
-  modalForm = document.createElement('div');
-  modalPlace = document.querySelector('.actualProjects');
-  modalForm.setAttribute('id', 'modalBox');
-  modalPlace.append(modalForm);
-};
+  const initModal = () => {
+    modalForm = document.createElement('div');
+    modalPlace = document.querySelector('.actualProjects');
+    modalForm.setAttribute('id', 'modalBox');
+    modalPlace.append(modalForm);
+  };
 
-const inputInit = () => {
+  const inputInit = () => {
 
   inputForm = document.createElement('input');
   const addingStuff = document.createElement('button');
@@ -62,15 +62,15 @@ const inputInit = () => {
 
   // Everything thats inside Todo Modal //
 
-  const todoModalDetails = () => {
+const todoModalDetails = () => {
   let todoTitle = document.createElement('h5');
 
   const todoModal = () => {
-  todoDetails = document.createElement('div');
-  todoDetails.classList.add('todoDetails');
-  todoOverView = document.querySelector('.projectOverview');
-  todoOverView.append(todoDetails);
-};
+    todoDetails = document.createElement('div');
+    todoDetails.classList.add('todoDetails');
+    todoOverView = document.querySelector('.projectOverview');
+    todoOverView.append(todoDetails);
+  };
 
   // stuff inside Project Modal //
 
@@ -104,8 +104,8 @@ const inputInit = () => {
     mediumPriority.textContent = "Medium";
     highPriority.textContent = "High";
 
-
     // priorities values
+
     lowPriority.setAttribute('value', 'low');
     mediumPriority.setAttribute('value', 'medium');
     highPriority.setAttribute('value', 'high');
@@ -113,10 +113,12 @@ const inputInit = () => {
     // adding classes, IDs //
 
     submitButtonDiv.classList.add('submitButtonDiv');
+    dueDate.setAttribute('id', 'dateInput');
     dateDiv.classList.add('dateDiv');
     allTasks.classList.add('allTasks');
     taskInput.classList.add('taskInput');
     modalBody.classList.add('modalBody');
+    addTaskButtn.classList.add('addTaskButton');
     cancelIcon.setAttribute('id', 'cancelIcon');
     headerDiv.setAttribute('id', 'modalHeader');
     priorityDiv.classList.add('priorityDiv');
@@ -147,14 +149,30 @@ const inputInit = () => {
     todoTitle.textContent = todoListArray[arg].projectName;
   };
 
+   function createDomTask(...arr) {
+    let allTasks = document.querySelector('.allTasks');
+    let addedTask = document.createElement('div');
+    let newTask = document.createTextNode('');
+    addedTask.classList.add('tasks');
+    for(let i = 0; i < arr; i++) {
+      newTask = '';
+      newTask = arr[i];
+      console.log(arr[i]);
+      allTasks.append(newTask.textContent);
+    }
+
+  };
+
+
+
   // Remove project function//
 
   const removeProject = (delArg) => {
-  todoDetails.remove();
-  todoListArray.splice(delArg, 1);
-  divProjectList.splice(delArg, 1);
-  console.log(todoListArray);
-  console.log(divProjectList);
+    todoDetails.remove();
+    todoListArray.splice(delArg, 1);
+    divProjectList.splice(delArg, 1);
+    console.log(todoListArray);
+    console.log(divProjectList);
   };
 
 
@@ -163,7 +181,7 @@ const inputInit = () => {
   };
 
   return {
-    insideTodo, cleanInsideTodo, todoModal, removeProject
+    insideTodo, cleanInsideTodo, todoModal, removeProject, createDomTask
   };
 };
 

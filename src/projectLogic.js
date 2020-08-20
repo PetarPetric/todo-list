@@ -12,10 +12,12 @@ const selectingProject = () => {
     if(!todoDetails) {
       todoModalDetails().todoModal();
       todoModalDetails().insideTodo(indexNum);
+      taskAdded(indexNum);
     } else {
       todoModalDetails().cleanInsideTodo();
       todoModalDetails().todoModal();
       todoModalDetails().insideTodo(indexNum);
+      taskAdded(indexNum);
     };
     removeButton(indexNum, newArgument);
     });
@@ -66,15 +68,31 @@ function addCancelInits() {
   };
 
   const ProjectsFactory = function(projectName) {
-
+    const todoArr = [];
     return {
-      projectName
+      projectName, todoArr
   };
 };
 
 function makingObj() {
   newProject = ProjectsFactory(inputForm.value);
   todoListArray.push(newProject);
+  console.log(todoListArray);
+};
+
+function pushTaskToObj(num) {
+  const taskInput = document.querySelector('.taskInput');
+  let toDoTasks = todoListArray[num].todoArr
+  toDoTasks.push(taskInput.value);
+  todoModalDetails().createDomTask(...toDoTasks);
+
+};
+
+const taskAdded = (num) => {
+  let addTaskButton = document.querySelector('.addTaskButton');
+  addTaskButton.addEventListener('click', () => {
+  pushTaskToObj(num);
+  });
 };
 
 
