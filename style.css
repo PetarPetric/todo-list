@@ -95,6 +95,12 @@
   font-size: 22px;
 }
 
+.projectClass h5 {
+  margin-top: 4px;
+  height: 100%;
+  width: 100%;
+}
+
 .projectClass:hover {
   background-color: #CED1D0;
 }
